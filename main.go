@@ -14,7 +14,6 @@ func main() {
 	str = strings.Trim(str, "\r")
 	str = strings.Trim(str, "\n")
 
-	// Split the input into two parts based on the operator
 	parts := strings.Split(str, " ")
 
 	if len(parts) != 3 {
@@ -58,7 +57,6 @@ func main() {
 		return
 	}
 
-	// Check if the result is valid for Roman numerals
 	if roman1 != "" {
 		if result <= 0 {
 			fmt.Println("Result cannot be represented in Roman numerals.")
@@ -72,7 +70,7 @@ func main() {
 }
 
 func parseNumber(s string) (int, string, error) {
-	// Arabic numerals
+
 	arabicNumerals := map[string]int{
 		"1": 1, "2": 2, "3": 3, "4": 4, "5": 5,
 		"6": 6, "7": 7, "8": 8, "9": 9, "10": 10,
@@ -82,7 +80,6 @@ func parseNumber(s string) (int, string, error) {
 		return val, "", nil
 	}
 
-	// Roman numerals
 	romanNumerals := map[string]int{
 		"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5,
 		"VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10,
@@ -96,7 +93,7 @@ func parseNumber(s string) (int, string, error) {
 }
 
 func arabicToRoman(num int) string {
-	// Define Roman numeral symbols and their corresponding values
+
 	romanSymbols := []string{"X", "IX", "V", "IV", "I"}
 	romanValues := []int{10, 9, 5, 4, 1}
 
