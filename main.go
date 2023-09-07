@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	fmt.Println("Enter an arithmetic expression (e.g., '5 + 3' or 'V * II'): ")
+	fmt.Println("Введите арифметическое выражение след. типа (e.g., '5 + 3' or 'V * II'): ")
 	str, _ := bufio.NewReader(os.Stdin).ReadString('\r')
 	str = strings.Trim(str, "\r")
 	str = strings.Trim(str, "\n")
@@ -17,7 +17,7 @@ func main() {
 	parts := strings.Split(str, " ")
 
 	if len(parts) != 3 {
-		fmt.Println("Invalid input. Please provide an expression in the format 'a + b' or 'a * b'.")
+		fmt.Println("Invalid input.")
 		return
 	}
 
@@ -34,7 +34,7 @@ func main() {
 	}
 
 	if (roman1 != "" && roman2 == "") || (roman2 != "" && roman1 == "") {
-		fmt.Println("Ощибка, одно из чисел арабское другое римское")
+		fmt.Println("Ошибка, одно из чисел арабское другое римское")
 		return
 	}
 
@@ -59,7 +59,7 @@ func main() {
 
 	if roman1 != "" {
 		if result <= 0 {
-			fmt.Println("Result cannot be represented in Roman numerals.")
+			fmt.Println("Ошибка")
 			return
 		}
 		romanResult := arabicToRoman(result)
