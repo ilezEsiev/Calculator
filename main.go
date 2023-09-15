@@ -10,7 +10,7 @@ import (
 func main() {
 
 	fmt.Println("Введите арифметическое выражение след. типа (e.g., '5 + 3' or 'V * II'): ")
-	str, _ := bufio.NewReader(os.Stdin).ReadString('\r')
+	str, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 	str = strings.Trim(str, "\r")
 	str = strings.Trim(str, "\n")
 
