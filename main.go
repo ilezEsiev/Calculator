@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -17,7 +18,8 @@ func main() {
 	parts := strings.Split(str, " ")
 
 	if len(parts) != 3 {
-		fmt.Println("Invalid input.")
+		err := errors.New("Invalid input.")
+		fmt.Println(err)
 		return
 	}
 
@@ -59,7 +61,8 @@ func main() {
 
 	if roman1 != "" {
 		if result <= 0 {
-			fmt.Println("Ошибка")
+			err := errors.New("Ошибка! В римской системе нет отрицательных чисел и число ноль ")
+			fmt.Println(err)
 			return
 		}
 		romanResult := arabicToRoman(result)
@@ -82,7 +85,7 @@ func parseNumber(s string) (int, string, error) {
 
 	romanNumerals := map[string]int{
 		"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5,
-		"VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10,
+		"VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10, "L": 50, "C": 100,
 	}
 
 	if val, ok := romanNumerals[s]; ok {
@@ -94,14 +97,16 @@ func parseNumber(s string) (int, string, error) {
 
 func arabicToRoman(num int) string {
 
-	romanSymbols := []string{"X", "IX", "V", "IV", "I"}
-	romanValues := []int{10, 9, 5, 4, 1}
+	romanSymbols := []string{"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+	romanValues := []int{100, 90, 50, 40, 10, 9, 5, 4, 1}
 
 	result := ""
 	for i := 0; i < len(romanSymbols); i++ {
-		for num >= romanValues[i] {
+		if num >= romanValues[i] {
 			result += romanSymbols[i]
 			num -= romanValues[i]
+		} else if num == 0 {
+			return result
 		}
 	}
 	return result
