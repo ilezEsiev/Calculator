@@ -105,6 +105,7 @@ func arabicToRoman(num int) string {
 		if num >= romanValues[i] {
 			result += romanSymbols[i]
 			num -= romanValues[i]
+			i--                     // Исправил, нужно было декрементировать i
 		} else if num == 0 {
 			return result
 		}
